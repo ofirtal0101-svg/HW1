@@ -1,10 +1,57 @@
 import java.util.Arrays;
 
+
 public class Assignment01Q04 {
 
+
     public static int[] shiftArrayCyclic(int[] array, int move, char direction) {
-        // TODO: implement
+        if (move==0 || array.length==0 )
+            return array;
+        int sign;
+        int [] temp=new int[array.length];
+        int realMove=move%array.length;
+        
+        switch (direction) {
+            case 'R':
+                sign=1;
+                break;
+            case 'L':
+                sign=-1;
+                break;
+            default:
+                return array;
+            }
+            if (realMove<0)
+            {
+                sign=sign*-1;
+                realMove=realMove*-1;
+            }
+            
+            int checker;
+            for (int i=0;i<array.length;i++)
+            {
+                checker=(i+((sign)*realMove))%array.length;
+                if (checker<0)
+                checker=checker+array.length;
+                temp[checker]=array[i];
+
+            }
+
+            for (int i=0;i<array.length;i++)
+            {
+                array[i]=temp[i];
+            }
+    
+            
+            
+
+            
+        
+
+
+
         return array;
+    
     }
 
     public static void main(String[] args) {
